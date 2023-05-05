@@ -1,5 +1,6 @@
 package com.example.news_app
 
+import android.graphics.Color.RED
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
 import androidx.compose.foundation.clickable
@@ -12,10 +13,7 @@ import androidx.compose.foundation.text.KeyboardActions
 import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.material.*
 import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.ArrowBack
-import androidx.compose.material.icons.filled.Close
-import androidx.compose.material.icons.filled.Search
-import androidx.compose.material.icons.filled.Settings
+import androidx.compose.material.icons.filled.*
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -53,15 +51,7 @@ fun DisplayArticle(article: Article,  onClick: (Article) -> Unit) {
                     modifier = Modifier.padding(16.dp)
                 )
             }
-            if (!article.title.isNullOrEmpty()) {
-                Text(
-                    text = article.title,
-                    style = MaterialTheme.typography.body2,
-                    modifier = Modifier
-                        .padding(start = 16.dp, end = 16.dp, bottom = 16.dp)
-                        .fillMaxWidth()
-                )
-            }
+
         }
     }
 }
@@ -70,12 +60,9 @@ fun DisplayArticle(article: Article,  onClick: (Article) -> Unit) {
 fun FilterButton(navController: NavController) {
     IconButton(onClick = { navController.navigate("filter") }) {
         Icon(
-            imageVector = Icons.Default.Settings,
+            imageVector = Icons.Default.Edit,
             contentDescription = "Filter",
-            modifier = Modifier
-                .padding(10.dp),
-
-            )
+        )
     }
 }
 @Composable
@@ -85,10 +72,12 @@ fun ButtonFilter(navController: NavController, category: String, onFilter: (Stri
             navController.popBackStack().also { onFilter(category) }
         },
         modifier = Modifier
-            .fillMaxWidth()
             .padding(16.dp)
+            .background(Color.Cyan)
+            .size(width = 200.dp, height = 60.dp)
     ) {
         Text(text = category, style = MaterialTheme.typography.h5)
+
     }
 }
 @Composable

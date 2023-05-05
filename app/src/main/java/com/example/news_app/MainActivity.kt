@@ -87,7 +87,7 @@ class MainActivity : ComponentActivity() {
         Scaffold(topBar = {
             TopAppBar {
                 Text(
-                    text = "News!",
+                    text = "Welcome to my News App",
                     style = MaterialTheme.typography.h5
                 )
             }
