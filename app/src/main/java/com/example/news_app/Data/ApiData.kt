@@ -7,10 +7,25 @@ import retrofit2.http.Query
 
 interface ApiData {
 
+
     @GET("top-headlines")
     suspend fun fetchNews(
-        @Query("country") country:String,
-        @Query("apiKey") key:String): Response<NewsResponses>
-
-
+        @Query("country") country: String,
+        @Query("category") category: String,
+        @Query("apiKey") key: String
+    ): Response<NewsResponses>
+//------------------------------
+    //Abstract
+    @GET("top-headlines")
+    suspend fun fetchNews(
+        @Query("country") country: String,
+        @Query("apiKey") key: String
+    ): Response<NewsResponses>
+//------------------------------
+    @GET("top-headlines")
+    suspend fun getSearchQuery(
+        @Query("country") country: String,
+        @Query("q") query: String,
+        @Query("apiKey") category: String,
+    ): Response<NewsResponses>
 }
